@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepvia - You Matter More</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌱 Prepvia</div>
+    <p>Your exam journey doesn't have to be lonely.</p>
+</header>
+
+<main>
+
+    <!-- Welcome -->
+    <section class="hero">
+        <h1>Your rank matters.<br><span>You matter more.</span></h1>
+        <p>
+            A small digital companion for students preparing for JEE,
+            NEET and other exams.
+        </p>
+
+        <button onclick="scrollToSection('mood')">
+            Start Today's Check-in →
+        </button>
+    </section>
+
+
+    <!-- Mood -->
+    <section id="mood" class="card">
+        <h2>😊 How are you feeling today?</h2>
+        <p>There is no right or wrong answer.</p>
+
+        <div class="moods">
+            <button onclick="selectMood('Good')">😊<br>Good</button>
+            <button onclick="selectMood('Okay')">😐<br>Okay</button>
+            <button onclick="selectMood('Stressed')">😟<br>Stressed</button>
+            <button onclick="selectMood('Overwhelmed')">😣<br>Overwhelmed</button>
+            <button onclick="selectMood('Lonely')">😔<br>Lonely</button>
+        </div>
+
+        <div id="moodResult"></div>
+    </section>
+
+
+    <!-- Reset -->
+    <section class="card">
+        <h2>🧘 60-Second Reset</h2>
+
+        <p id="breathingText">
+            Feeling overwhelmed? Let's take one minute.
+        </p>
+
+        <div class="breathing-circle" id="breathingCircle">
+            Breathe
+        </div>
+
+        <button onclick="startBreathing()">
+            Start Reset
+        </button>
+    </section>
+
+
+    <!-- Study Timer -->
+    <section class="card">
+        <h2>📚 Focus Session</h2>
+        <p>Study for a small amount of time. Small progress counts.</p>
+
+        <div class="timer" id="timer">
+            25:00
+        </div>
+
+        <div>
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Reset</button>
+        </div>
+    </section>
+
+
+    <!-- Goal -->
+    <section class="card">
+        <h2>🎯 Today's Small Goal</h2>
+
+        <input
+            type="text"
+            id="goalInput"
+            placeholder="Example: Complete 20 Physics questions"
+        >
+
+        <button onclick="saveGoal()">Save Goal</button>
+
+        <div id="goalDisplay"></div>
+    </section>
+
+
+    <!-- Game -->
+    <section class="card game">
+        <h2>🌱 Grow Your Mind</h2>
+
+        <div id="plant" class="plant">
+            🌱
+        </div>
+
+        <p id="pointsText">
+            Your plant has 0 points.
+        </p>
+
+        <button onclick="completeSmallWin()">
+            I Completed Something ✓
+        </button>
+
+        <p class="small">
+            Every small step counts. Missing a day doesn't mean failure.
+        </p>
+    </section>
+
+
+    <!-- Study together -->
+    <section class="card">
+        <h2>👥 You're Not Alone</h2>
+
+        <p>
+            Thousands of students are preparing for exams.
+            You don't have to compare yourself with them.
+        </p>
+
+        <div class="study-room">
+            <h3>📚 JEE Physics Focus Room</h3>
+            <p>Students studying now: <strong id="students">127</strong></p>
+
+            <button onclick="joinRoom()">
+                Join Focus Room
+            </button>
+
+            <p id="roomMessage"></p>
+        </div>
+    </section>
+
+
+    <!-- Help -->
+    <section class="help-card">
+        <h2>🆘 Need Someone Right Now?</h2>
+
+        <p>
+            If you're feeling extremely overwhelmed, hopeless,
+            or feel that you might hurt yourself, please don't
+            handle it alone.
+        </p>
+
+        <button onclick="showHelp()">
+            I Need Help
+        </button>
+
+        <div id="helpMessage"></div>
+    </section>
+
+</main>
+
+
+<footer>
+    <p>🌱 Prepvia</p>
+    <p>You are more than your marks.</p>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- =========================
+     FOCUS GAME
+========================= -->
+
+<section id="focus-game" class="section">
+
+    <div class="section-heading">
+
+        <span>FOCUS CHALLENGE</span>
+
+        <h2>
+            🛡️ Protect Your Focus
+        </h2>
+
+        <p>
+            Can you stay focused for 60 seconds?
+            Don't click the distractions.
+        </p>
+
+    </div>
+
+
+    <div class="game-container">
+
+        <div class="game-top">
+
+            <div>
+                ⏱️
+                <strong id="game-time">60</strong>
+            </div>
+
+            <div>
+                🎯
+                Focus:
+                <strong id="focus-score">100</strong>
+            </div>
+
+        </div>
+
+
+        <div id="game-area">
+
+            <div id="game-start-screen">
+
+                <div class="shield">
+                    🛡️
+                </div>
+
+                <h3>
+                    Ready to protect your focus?
+                </h3>
+
+                <p>
+                    Distractions will appear.
+                    Don't click them.
+                </p>
+
+                <button onclick="startFocusGame()">
+                    START CHALLENGE
+                </button>
+
+            </div>
+
+
+            <div id="game-message"></div>
+
+        </div>
+
+
+        <div class="game-result hidden"
+             id="game-result">
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="feature-card">
+
+    <div class="feature-icon">
+        🧠
+    </div>
+
+    <h3>Stress Radar</h3>
+
+    <p>
+        Understand what's stressing you
+        and learn how to respond.
+    </p>
+
+    <button onclick="openStressRadar()">
+        Play Stress Radar →
+    </button>
+
+</div>
+<!-- =========================
+     FOCUS GAME
+========================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span>FOCUS CHALLENGE</span>
+
+        <h2>🎯 Ready to test your focus?</h2>
+
+        <p>
+            Take a short challenge, protect your attention,
+            and see how focused you can be.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            🎯
+        </div>
+
+        <h3>
+            Focus Lock
+        </h3>
+
+        <p>
+            Find the correct targets and ignore
+            distractions. Score 80% or more and
+            unlock your study session.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="openFocusGame()">
+
+            🎯 Let's Play Focus Game →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

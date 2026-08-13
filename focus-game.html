@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Focus Lock | PrepMate</title>
+
+    <link rel="stylesheet"
+          href="focus-game.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- BACK -->
+
+    <button class="back-button"
+            onclick="goBack()">
+
+        ← Back to PrepMate
+
+    </button>
+
+
+
+    <main class="game-wrapper">
+
+
+        <!-- =========================
+             INTRO
+        ========================= -->
+
+        <section id="intro"
+                 class="screen">
+
+
+            <div class="game-icon">
+                🎯
+            </div>
+
+
+            <span class="label">
+                FOCUS CHALLENGE
+            </span>
+
+
+            <h1>
+                Focus Lock
+            </h1>
+
+
+            <p>
+
+                Your target will appear for a moment.
+
+                Remember it.
+
+                Then find the correct targets
+                while ignoring distractions.
+
+            </p>
+
+
+            <div class="rules">
+
+                <div>
+                    🎯 Find the target
+                </div>
+
+                <div>
+                    🚫 Ignore distractions
+                </div>
+
+                <div>
+                    ⏱️ Beat the timer
+                </div>
+
+            </div>
+
+
+            <button class="primary-button"
+                    onclick="startGame()">
+
+                LET'S PLAY →
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             TARGET SCREEN
+        ========================= -->
+
+        <section id="target-screen"
+                 class="screen hidden">
+
+
+            <span class="label">
+                REMEMBER YOUR TARGET
+            </span>
+
+
+            <h2>
+                Your target is:
+            </h2>
+
+
+            <div id="target-display"
+                 class="target-display">
+
+            </div>
+
+
+            <p>
+                Remember it!
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             GAME
+        ========================= -->
+
+        <section id="game-screen"
+                 class="screen hidden">
+
+
+            <div class="game-header">
+
+                <span>
+                    ⏱️ Time:
+                    <strong id="time">
+                        30
+                    </strong>
+                </span>
+
+
+                <span>
+                    🎯 Score:
+                    <strong id="score">
+                        0
+                    </strong>%
+                </span>
+
+            </div>
+
+
+            <div id="game-area">
+
+            </div>
+
+
+            <p id="game-message">
+
+                Find your target!
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             RESULT
+        ========================= -->
+
+        <section id="result-screen"
+                 class="screen hidden">
+
+
+            <div id="result-icon"
+                 class="result-icon">
+
+                🎯
+
+            </div>
+
+
+            <span class="label">
+                FOCUS CHALLENGE COMPLETE
+            </span>
+
+
+            <h1 id="result-title">
+
+                Your Focus Score
+
+            </h1>
+
+
+            <div id="final-score"
+                 class="final-score">
+
+                0%
+
+            </div>
+
+
+            <p id="result-message">
+
+            </p>
+
+
+            <!-- SUCCESS -->
+
+            <div id="study-unlock"
+                 class="study-unlock hidden">
+
+
+                <div class="unlock-icon">
+                    📚
+                </div>
+
+
+                <h2>
+                    Focus Ready!
+                </h2>
+
+
+                <p>
+                    You scored 80% or more.
+                    Now it's time to start your study session.
+                </p>
+
+
+                <button class="primary-button"
+                        onclick="startStudying()">
+
+                    📚 START STUDY SESSION →
+
+                </button>
+
+
+            </div>
+
+
+            <!-- TRY AGAIN -->
+
+            <button id="try-again"
+                    class="secondary-button"
+                    onclick="restartGame()">
+
+                🔄 Try Again
+
+            </button>
+
+
+            <button class="secondary-button"
+                    onclick="goBack()">
+
+                ← Back to PrepMate
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script src="focus-game.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
