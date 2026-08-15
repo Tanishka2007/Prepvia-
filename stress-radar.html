@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Stress Radar | PrepMate</title>
+
+    <link rel="stylesheet"
+          href="stress-radar.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- BACK BUTTON -->
+
+    <button class="back-button"
+            onclick="goBack()">
+
+        ← Back to PrepMate
+
+    </button>
+
+
+
+    <!-- GAME -->
+
+    <main class="game-wrapper">
+
+
+        <!-- INTRO -->
+
+        <section id="intro-screen"
+                 class="game-screen">
+
+
+            <div class="monster">
+
+                😈
+
+            </div>
+
+
+            <div class="game-label">
+
+                🧠 STRESS RADAR
+
+            </div>
+
+
+            <h1>
+
+                Meet Your
+                <span>Stress Monster</span>
+
+            </h1>
+
+
+            <p>
+
+                Your stress isn't your enemy.
+
+                Let's understand what's feeding it
+                and find a way to handle it.
+
+            </p>
+
+
+            <button class="primary-button"
+                    onclick="startGame()">
+
+                Meet My Monster →
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- STEP 1 -->
+
+        <section id="stress-screen"
+                 class="game-screen hidden">
+
+
+            <div id="monster-display"
+                 class="monster monster-large">
+
+                😈
+
+            </div>
+
+
+            <h2>
+
+                How strong is your
+                Stress Monster today?
+
+            </h2>
+
+
+            <div class="stress-number">
+
+                <span id="stress-value">
+                    5
+                </span>
+
+                / 10
+
+            </div>
+
+
+            <input
+                type="range"
+                id="stress-slider"
+                min="1"
+                max="10"
+                value="5"
+                oninput="updateStress()"
+            >
+
+
+            <div class="slider-labels">
+
+                <span>😌 Calm</span>
+
+                <span>😰 Very stressed</span>
+
+            </div>
+
+
+            <button class="primary-button"
+                    onclick="nextStep()">
+
+                Continue →
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- STEP 2 -->
+
+        <section id="cause-screen"
+                 class="game-screen hidden">
+
+
+            <div class="monster monster-medium">
+
+                😈
+
+            </div>
+
+
+            <h2>
+
+                What's feeding
+                your Stress Monster?
+
+            </h2>
+
+
+            <p>
+
+                Choose the biggest thing
+                bothering you right now.
+
+            </p>
+
+
+            <div class="cause-grid">
+
+
+                <button onclick="selectCause('Syllabus')">
+
+                    📚
+                    <span>Syllabus</span>
+
+                </button>
+
+
+                <button onclick="selectCause('Exam pressure')">
+
+                    📝
+                    <span>Exam pressure</span>
+
+                </button>
+
+
+                <button onclick="selectCause('Comparison')">
+
+                    👥
+                    <span>Comparison</span>
+
+                </button>
+
+
+                <button onclick="selectCause('Distractions')">
+
+                    📱
+                    <span>Distractions</span>
+
+                </button>
+
+
+                <button onclick="selectCause('Expectations')">
+
+                    👨‍👩‍👧
+                    <span>Expectations</span>
+
+                </button>
+
+
+                <button onclick="selectCause('Fear of failure')">
+
+                    😰
+                    <span>Fear of failure</span>
+
+                </button>
+
+
+            </div>
+
+
+            <p id="cause-message"></p>
+
+
+        </section>
+
+
+
+        <!-- STEP 3 -->
+
+        <section id="response-screen"
+                 class="game-screen hidden">
+
+
+            <div id="calm-monster"
+                 class="monster monster-large">
+
+                😈
+
+            </div>
+
+
+            <h2>
+
+                What would help
+                you handle this?
+
+            </h2>
+
+
+            <p>
+
+                Choose one small response.
+
+            </p>
+
+
+            <div class="response-grid">
+
+
+                <button onclick="chooseResponse('breathe')">
+
+                    🫁
+
+                    <strong>
+                        Breathe
+                    </strong>
+
+                    <small>
+                        Slow everything down
+                    </small>
+
+                </button>
+
+
+                <button onclick="chooseResponse('break')">
+
+                    📚
+
+                    <strong>
+                        Break It Down
+                    </strong>
+
+                    <small>
+                        Make the task smaller
+                    </small>
+
+                </button>
+
+
+                <button onclick="chooseResponse('disconnect')">
+
+                    📵
+
+                    <strong>
+                        Remove Distractions
+                    </strong>
+
+                    <small>
+                        Protect your focus
+                    </small>
+
+                </button>
+
+
+                <button onclick="chooseResponse('connect')">
+
+                    🤝
+
+                    <strong>
+                        Connect
+                    </strong>
+
+                    <small>
+                        Talk to someone
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- STEP 4 -->
+
+        <section id="challenge-screen"
+                 class="game-screen hidden">
+
+
+            <div id="challenge-monster"
+                 class="monster monster-large">
+
+                😈
+
+            </div>
+
+
+            <div class="game-label">
+
+                YOUR MINI MISSION
+
+            </div>
+
+
+            <h2 id="challenge-title">
+
+                Your mission
+
+            </h2>
+
+
+            <p id="challenge-text">
+
+            </p>
+
+
+            <div id="challenge-box"
+                 class="challenge-box">
+
+            </div>
+
+
+            <button class="primary-button"
+                    onclick="completeChallenge()">
+
+                I DID IT ✓
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- FINAL -->
+
+        <section id="result-screen"
+                 class="game-screen hidden">
+
+
+            <div class="monster victory-monster">
+
+                🌱
+
+            </div>
+
+
+            <div class="game-label">
+
+                STRESS RADAR COMPLETE
+
+            </div>
+
+
+            <h1>
+
+                You didn't defeat stress.
+
+                <span>
+                    You learned how to respond.
+                </span>
+
+            </h1>
+
+
+            <p id="result-message">
+
+            </p>
+
+
+            <div class="skill-badge">
+
+                🛡️
+
+                <strong>
+                    Stress Skill Unlocked
+                </strong>
+
+                <span id="skill-name">
+
+                </span>
+
+            </div>
+
+
+            <button class="primary-button"
+                    onclick="playAgain()">
+
+                Play Again
+
+            </button>
+
+
+            <button class="secondary-button"
+                    onclick="goBack()">
+
+                ← Back to PrepMate
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="stress-radar.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
